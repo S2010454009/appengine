@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>appengine-endpoints</artifactId>
+        <groupId>clc3</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+	
+    <artifactId>appengine-endpoints-backend</artifactId>
+
+    <packaging>war</packaging>
+
+    <properties>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        <endpoints.project.id>{TODO_PROJECT_ID}</endpoints.project.id>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>clc3</groupId>
+            <artifactId>appengine-endpoints-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.endpoints</groupId>
+            <artifactId>endpoints-framework</artifactId>
+            <version>${version.com.google.endpoints.endpoints-framework}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.endpoints</groupId>
+            <artifactId>endpoints-management-control-appengine-all</artifactId>
+            <version>${version.com.google.endpoints.endpoints-management}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-storage</artifactId>
+            <version>${version.com.google.cloud.google-cloud-storage}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${version.javax.servlet.servlet-api}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${version.javax.inject}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.maven-war-plugin}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${version.com.google.cloud.tools.appengine-maven-plugin}</version>
+                <configuration>
+                    <projectId>GCLOUD_CONFIG</projectId>
+                    <version>GCLOUD_CONFIG</version>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>endpoints-framework-maven-plugin</artifactId>
+                <version>${version.com.google.cloud.tools.endpoints-framework-maven-plugin}</version>
+                <configuration>
+                    <hostname>${endpoints.project.id}.appspot.com</hostname>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

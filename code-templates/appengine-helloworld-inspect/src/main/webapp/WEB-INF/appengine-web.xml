@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <threadsafe>true</threadsafe>
+    <runtime>java8</runtime>
+    <sessions-enabled>false</sessions-enabled>
+
+    <!-- Performance settings here... -->
+    <instance-class>B1</instance-class>
+
+    <!-- this instances will be managed by google -->
+    <basic-scaling>
+        <max-instances>2</max-instances>
+        <idle-timeout>1m</idle-timeout>
+    </basic-scaling>
+
+    <!-- this instances will be permanently deployed
+    <manual-scaling>
+        <instances>2</instances>
+    </manual-scaling> -->
+
+    <system-properties>
+        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    </system-properties>
+
+</appengine-web-app>

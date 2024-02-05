@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>clc3</groupId>
+    <artifactId>appengine-endpoints</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>appengine-endpoints-backend</module>
+        <module>appengine-endpoints-common</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <version.javax.servlet.servlet-api>3.1.0</version.javax.servlet.servlet-api>
+        <version.javax.inject>1</version.javax.inject>
+
+        <version.com.google.appengine>1.9.82</version.com.google.appengine>
+        <version.com.google.endpoints.endpoints-framework>2.2.1</version.com.google.endpoints.endpoints-framework>
+        <version.com.google.endpoints.endpoints-management>1.0.13</version.com.google.endpoints.endpoints-management>
+        <version.com.google.cloud.google-cloud-datastore>1.105.0</version.com.google.cloud.google-cloud-datastore>
+        <version.com.google.cloud.google-cloud-storage>1.113.1</version.com.google.cloud.google-cloud-storage>
+        <version.com.google.cloud.google-cloud-vision>1.100.2</version.com.google.cloud.google-cloud-vision>
+
+        <version.com.google.cloud.tools.appengine-maven-plugin>2.0.0</version.com.google.cloud.tools.appengine-maven-plugin>
+        <version.com.google.cloud.tools.endpoints-framework-maven-plugin>2.0.1</version.com.google.cloud.tools.endpoints-framework-maven-plugin>
+        <version.org.apache.maven.plugins.maven-war-plugin>3.1.0</version.org.apache.maven.plugins.maven-war-plugin>
+        <version.org.apache.maven.plugins.maven-shade-plugin>3.2.4</version.org.apache.maven.plugins.maven-shade-plugin>
+    </properties>
+</project>

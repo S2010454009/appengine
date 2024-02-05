@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>clc3</groupId>
+    <artifactId>appengine-helloworld-inspect</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        <version.javax.servlet.servlet-api>3.1.0</version.javax.servlet.servlet-api>
+        <version.com.google.appengine>1.9.82</version.com.google.appengine>
+        <version.com.google.cloud.tools.appengine-maven-plugin>2.0.0</version.com.google.cloud.tools.appengine-maven-plugin>
+        <version.org.apache.maven.plugins.maven-war-plugin>3.1.0</version.org.apache.maven.plugins.maven-war-plugin>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${version.javax.servlet.servlet-api}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- App Engine SDK dependency : only required if you need to explicitly use App Engine API -->
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>${version.com.google.appengine}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${version.com.google.cloud.tools.appengine-maven-plugin}</version>
+                <configuration>
+                    <projectId>GCLOUD_CONFIG</projectId>
+                    <version>GCLOUD_CONFIG</version>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.maven-war-plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

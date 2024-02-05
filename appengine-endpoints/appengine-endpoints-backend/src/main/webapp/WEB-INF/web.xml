@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <display-name>
+        CLC3 - Cloud Endpoints with Google App Engine
+    </display-name>
+
+    <!-- Configure backend with Endpoints -->
+    <servlet>
+        <servlet-name>EndpointsServlet</servlet-name>
+        <servlet-class>com.google.api.server.spi.EndpointsServlet</servlet-class>
+        <init-param>
+            <param-name>services</param-name>
+            <param-value>clc3.playground.endpoints.DataEndpoint</param-value>
+            <!-- List all endpoints
+                 <param-value>Endpoint1, Endpoint2,...</param-value>
+             -->
+        </init-param>
+    </servlet>
+
+    <!-- Route requests to the backend. -->
+    <servlet-mapping>
+        <servlet-name>EndpointsServlet</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Filter that fetches the service config from service management. -->
+    <filter>
+        <filter-name>endpoints-api-configuration</filter-name>
+        <filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class>
+    </filter>
+
+    <!-- Filter for Endpoints logging and monitoring -->
+    <filter>
+        <filter-name>endpoints-api-controller</filter-name>
+        <filter-class>com.google.api.control.extensions.appengine.GoogleAppEngineControlFilter</filter-class>
+        <init-param>
+            <param-name>endpoints.projectId</param-name>
+            <param-value>clc3-ws2021-wk-22-01-12</param-value>
+        </init-param>
+        <init-param>
+            <param-name>endpoints.serviceName</param-name>
+            <param-value>clc3-ws2021-wk-22-01-12.appspot.com</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>endpoints-api-configuration</filter-name>
+        <servlet-name>EndpointsServlet</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>endpoints-api-controller</filter-name>
+        <servlet-name>EndpointsServlet</servlet-name>
+    </filter-mapping>
+</web-app>
